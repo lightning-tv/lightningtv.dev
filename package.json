@@ -1,0 +1,51 @@
+{
+  "name": "lightningtv.dev",
+  "version": "0.0.1",
+  "description": "LightningTV Website",
+  "type": "module",
+  "main": "index.html",
+  "sideEffects": false,
+  "scripts": {
+    "start": "npx http-server ./src -o",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "npm run lint:prettier && npm run lint:eslint",
+    "lint:fix": "npm run lint:fix:prettier && npm run lint:fix:eslint",
+    "lint:prettier": "prettier --check \"**/*.{ts,js,cjs,md}\"",
+    "lint:fix:prettier": "prettier --write \"**/*.{ts,js,cjs,md}\"",
+    "lint:eslint": "eslint .",
+    "lint:fix:eslint": "eslint --fix .",
+    "build": "npm run tsc && rollup -c",
+    "tsc": "tsc",
+    "watch": "tsc -w",
+    "prepare": "husky",
+    "prepack": "npm run build"
+  },
+  "keywords": [
+    "lightning",
+    "javascript",
+    "canvas",
+    "web",
+    "tv"
+  ],
+  "author": "Chris Lorenzo",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.5",
+    "prettier": "^3.2.5",
+    "tailwindcss": "^3.4.3"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "prettier --write"
+    ],
+    "*.{js,cjs,md}": "prettier --write"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lightning-tv/lightningtv.dev.git"
+  },
+  "dependencies": {
+    "http-server": "^14.1.1"
+  }
+}
