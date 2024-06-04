@@ -6,7 +6,7 @@
   "main": "index.html",
   "sideEffects": false,
   "scripts": {
-    "start": "npx http-server ./src -o",
+    "start": "npx live-server ./src -o --no-css-inject & npm run watch",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "npm run lint:prettier && npm run lint:eslint",
     "lint:fix": "npm run lint:fix:prettier && npm run lint:fix:eslint",
@@ -14,9 +14,7 @@
     "lint:fix:prettier": "prettier --write \"**/*.{ts,js,cjs,md}\"",
     "lint:eslint": "eslint .",
     "lint:fix:eslint": "eslint --fix .",
-    "build": "npm run tsc && rollup -c",
-    "tsc": "tsc",
-    "watch": "tsc -w",
+    "watch": "tailwindcss -i ./src/input.css -o ./src/output.css --watch",
     "prepare": "husky",
     "prepack": "npm run build"
   },

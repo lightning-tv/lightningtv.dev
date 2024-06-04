@@ -1,631 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="icon" href="/favicon.ico">
-        <link rel="alternate icon" href="/favicon.svg" type="image/svg+xml">
-        <script>
-            function getCookie(name, cookieString) {
-                if (!name || !cookieString)
-                    return "system";
-                const match = cookieString.match(new RegExp(`\\W?${name}=(?<theme>\\w+)`));
-                return match?.groups?.theme || "system";
-            }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lightning TV Development with SolidJS or VueJS</title>
+    <link href="./output.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap|Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
 
-            const getUserTheme = ()=>getCookie("theme", document.cookie);
+        .logo-href {
+            font-size: x-large;
+            font-weight: bold;
+        }
 
-            const getSystemTheme = ()=>window.matchMedia("(prefers-color-scheme: dark)").matches ? {
-                value: "dark",
-                theme: "material-theme-ocean"
-            } : {
-                value: "light",
-                theme: "min-light"
-            };
+        .hero {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(to right, #6F45E8, #1C64F2);
+        }
 
-            const systemTheme = getSystemTheme();
-            const themes = [{
-                value: "light",
-                theme: "min-light"
-            }, {
-                value: "dark",
-                theme: "material-theme-ocean"
-            }, {
-                value: systemTheme.value,
-                theme: systemTheme.theme,
-            }, ];
-            const themeName = getUserTheme();
-            const theme = themes.find((t)=>t.value == themeName) ?? themes[2];
+        .hero-text {
+            background-image: linear-gradient(to bottom right, #F3A346, #F2FF5C);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <header class="shadow-lg shadow-gray-500/50 bg-white fixed top-0 left-0 right-0 z-10">
+        <div class="flex flex-row justify-between max-w-screen-xl mx-auto">
+            <div class="flex-1">
+                <a class="logo-href" href="/">
+                    <img src="images/lightningtv-logo-400.png" alt="Lightning TV Logo" class="inline w-16 aspect-square" />
+                    Lightning TV
+                </a>
+            </div>
+            <nav class="flex-1 flex justify-end gap-8 p-6 text-base font-medium text-gray-900">
+                <a href="#">SolidJS</a>
+                <a href="#">VueJS</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="flex flex-col mt-[130px] max-w-screen-xl mx-auto">
 
-            document.documentElement.classList.add(theme.value);
-            document.documentElement.setAttribute('data-theme', theme.theme);
-        </script>
-        
-        <title>Lightning TV</title>
-    </head>
-    <body class="min-h-screen dark:bg-slate-900 bg-slate-50">
-        <div id="app">
-            <div class="relative dark:bg-slate-900 bg-slate-50">
-                <!--$-->
-                <div role="alert" class="dark:text-slate-900 text-white text-center p-1 font-semibold border-blue-50 dark:border-blue-600 bg-[rgb(14,142,231)] dark:bg-[rgb(162,222,255)] ">
-                    These docs are currently in Beta! <a class="underline" href="https://shr.link/pna6n" rel="noopener noreferrer">Share your feedback with us!</a>
+        <section class="hero flex flex-col justify-center w-full bg-gray-100 max-md:max-w-full rounded-3xl relative">
+            <img src="images/vue.png" width="160" height="160" alt="VueJS Logo" style="bottom: 50px; right: 200px; transform: rotate(-6deg);" class="absolute" />
+            <img src="images/solid.png" width="160" height="160" alt="SolidJS Logo" style="bottom: 50px; left: 200px; transform: rotate(6deg);"  class="absolute" />
+            <div class="flex overflow-hidden relative flex-col justify-center p-6 w-full min-h-[500px] max-md:px-5 max-md:max-w-full">
+                <h1 class="text-center text-6xl font-bold text-white bg-clip-text max-md:mr-2.5 max-md:max-w-full max-md:text-4xl"><span class="hero-text bg-clip-text text-transparent animate-fade-up">Supercharge</span> your <span class="hero-tv-apps">TV Apps</span></h1>
+                <p class="self-stretch mt-4 text-xl leading-7 text-center text-white max-md:max-w-full">Use your favorite framework to craft stunning TV Apps<br />with the performance of LightningJS.</p>
+                <div class="flex gap-4 justify-center mt-16 text-base font-medium leading-6 text-zinc-900 max-md:flex-wrap max-md:mt-10">
+                    <a href="https://lightning-tv.github.io/solid/#/intro/getting_started" class="justify-center px-5 py-3 bg-white rounded-lg">Get Started with SolidJS</a>
+                    <a href="#" class="justify-center px-5 py-3 bg-white rounded-lg">Get Started with VueJS</a>
                 </div>
-                <!--/-->
-                <!--$-->
-                <header class="sticky top-0 z-50 flex items-center justify-between bg-blue-50/80 shadow-md shadow-slate-900/5 transition duration-500 dark:shadow-none backdrop-blur  dark:bg-transparent bg-transparent">
-                    <div class="grid lg:grid-cols-[1fr,2fr,1fr] grid-cols-2 py-2 px-4 items-center w-full max-w-8xl mx-auto ">
-                        <div class="flex justify-start gap-2">
-                            <div class="flex lg:hidden">
-                                <button type="button" aria-haspopup="dialog" aria-expanded="false" data-closed="">
-                                    <svg viewBox="0 0 24 24" fill="currentColor" stroke="none" class="h-6 prose dark:prose-invert ">
-                                        <path fill-rule="evenodd" d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z" clip-rule="evenodd"></path>
-                                    </svg>
-                                </button>
-                            </div>
-                            <!--$-->
-                            <a aria-label="Home page" href="/" class=" active" link="true" aria-current="page">
-                                <div class="w-full inline-flex space-x-1 items-center text-primary dark:text-primary-dark py-2">
-                                    <svg class="w-9 h-9 -mt-1 text-link dark:text-link-dark " width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 166 155.3">
-                                        <defs>
-                                            <linearGradient id="a" gradientUnits="userSpaceOnUse" x1="27.5" y1="3" x2="152" y2="63.5">
-                                                <stop offset=".1" stop-color="#76b3e1"></stop>
-                                                <stop offset=".3" stop-color="#dcf2fd"></stop>
-                                                <stop offset="1" stop-color="#76b3e1"></stop>
-                                            </linearGradient>
-                                            <linearGradient id="b" gradientUnits="userSpaceOnUse" x1="95.8" y1="32.6" x2="74" y2="105.2">
-                                                <stop offset="0" stop-color="#76b3e1"></stop>
-                                                <stop offset=".5" stop-color="#4377bb"></stop>
-                                                <stop offset="1" stop-color="#1f3b77"></stop>
-                                            </linearGradient>
-                                            <linearGradient id="c" gradientUnits="userSpaceOnUse" x1="18.4" y1="64.2" x2="144.3" y2="149.8">
-                                                <stop offset="0" stop-color="#315aa9"></stop>
-                                                <stop offset=".5" stop-color="#518ac8"></stop>
-                                                <stop offset="1" stop-color="#315aa9"></stop>
-                                            </linearGradient>
-                                            <linearGradient id="d" gradientUnits="userSpaceOnUse" x1="75.2" y1="74.5" x2="24.4" y2="260.8">
-                                                <stop offset="0" stop-color="#4377bb"></stop>
-                                                <stop offset=".5" stop-color="#1a336b"></stop>
-                                                <stop offset="1" stop-color="#1a336b"></stop>
-                                            </linearGradient>
-                                        </defs>
-                                        <path d="M163 35S110-4 69 5l-3 1c-6 2-11 5-14 9l-2 3-15 26 26 5c11 7 25 10 38 7l46 9 18-30z" fill="#76b3e1"></path>
-                                        <path d="M163 35S110-4 69 5l-3 1c-6 2-11 5-14 9l-2 3-15 26 26 5c11 7 25 10 38 7l46 9 18-30z" opacity=".3" fill="url(#a)"></path>
-                                        <path d="m52 35-4 1c-17 5-22 21-13 35 10 13 31 20 48 15l62-21S92 26 52 35z" fill="#518ac8"></path>
-                                        <path d="m52 35-4 1c-17 5-22 21-13 35 10 13 31 20 48 15l62-21S92 26 52 35z" opacity=".3" fill="url(#b)"></path>
-                                        <path d="M134 80a45 45 0 0 0-48-15L24 85 4 120l112 19 20-36c4-7 3-15-2-23z" fill="url(#c)"></path>
-                                        <path d="M114 115a45 45 0 0 0-48-15L4 120s53 40 94 30l3-1c17-5 23-21 13-34z" fill="url(#d)"></path>
-                                    </svg>
-                                    <span class="dark:text-white text-2xl leading-none font-normal inactive md:block hidden">
-                                        <b>Solid</b>
-                                        Docs
-                                    </span>
-                                </div>
-                            </a>
-                            <!--/-->
+            </div>
+        </section>
+        <section class="justify-center px-6 pt-16 pb-16 w-full text-3xl font-medium leading-10 bg-gray-100 text-zinc-900 max-md:pr-6 max-md:pl-5 max-md:max-w-full">
+            LightningJS is an open-source WebGL renderer enabling smooth and visually appealing UIs in a web browser. No HTML or CSS, resulting in high performance TV apps even on low-end devices. It provides the flexibility to choose your preferred front-end framework like SolidJS or VueJS.
+        </section>
+        <section class="flex flex-col items-start px-20 py-16 w-full bg-white max-md:px-5 max-md:max-w-full">
+            <h2 class="text-sm font-bold leading-5 text-blue-600 uppercase tracking-[3.5px] max-md:max-w-full">our features</h2>
+            <h3 class="mt-6 text-4xl font-semibold text-black max-md:max-w-full">Solid &amp; Lightning is unmatched in speed and performance</h3>
+            <p class="mt-6 text-lg leading-7 text-zinc-500 max-md:max-w-full">SolidJS is an established framework with 10,000+ members in its community. It is the top rated in performance across all front-end frameworks and is available now for your TV app development. Compared to Blits, the proprietary application framework for LightningJS, SolidJS is</p>
+            <div class="self-stretch mt-8 max-md:max-w-full">
+                <div class="flex gap-5 max-md:flex-col max-md:gap-0">
+                    <article class="flex flex-col w-[33%] max-md:ml-0 max-md:w-full">
+                        <div class="flex flex-col grow self-stretch p-6 max-md:px-5 max-md:max-w-full">
+                            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/3cb80164a39240c52400814966937427c763968c38c9f95c0f42cc21204ff1e2?apiKey=23c357ad83b14e24b63f8828469e9c31&" alt="Feature Icon 1" class="w-8 aspect-square" />
+                            <h4 class="mt-8 text-3xl font-semibold text-neutral-800">Smaller</h4>
+                            <p class="mt-2 text-base leading-6 text-gray-500">12kb Minified + Gzipped</p>
                         </div>
-                        <ul class="order-2 col-span-2 lg:col-span-1 flex pt-6 lg:pt-0 lg:w-auto w-full gap-5 justify-center">
-                            <li>
-                                <a class="text-slate-900 dark:text-slate-200 relative overflow-hidden drop-shadow-[0_35px_35px_rgba(1,1,1,1.75)] px-2  active border-b-2 border-b-blue-500 dark:bottom-b-blue-500 transition-all duration-250" href="/" link="true" aria-current="page">Core</a>
-                            </li>
-                            <li>
-                                <a href="/solid-router" class="text-slate-900 dark:text-slate-200 px-2 inactive" link="true">Router</a>
-                            </li>
-                            <li>
-                                <a href="/solid-start" class="text-slate-900 dark:text-slate-200 px-2 inactive" link="true">SolidStart</a>
-                            </li>
-                            <li>
-                                <a href="/solid-meta" class="text-slate-900 dark:text-slate-200 px-2 inactive" link="true">Meta</a>
-                            </li>
-                        </ul>
-                        <div class="lg:order-2 flex basis-0 gap-4 items-center justify-end order-">
-                            <!--$-->
-                            <div class="fixed z-10">
-                                <orama-searchbox></orama-searchbox>
-                            </div>
-                            <orama-search-button></orama-search-button>
-                            <!--/-->
-                            <!--$-->
-                            <a target="_blank" rel="noopener noreferrer" aria-label="GitHub" href="https://github.com/solidjs/solid" class="group inactive" link="true">
-                                <svg aria-hidden="true" viewBox="0 0 16 16" class="h-6 w-6 fill-slate-800 dark:fill-slate-200 group-hover:dark:fill-white dark:group-hover:fill-slate-300">
-                                    <path d="M8 0C3.58 0 0 3.58 0 8C0 11.54 2.29 14.53 5.47 15.59C5.87 15.66 6.02 15.42 6.02 15.21C6.02 15.02 6.01 14.39 6.01 13.72C4 14.09 3.48 13.23 3.32 12.78C3.23 12.55 2.84 11.84 2.5 11.65C2.22 11.5 1.82 11.13 2.49 11.12C3.12 11.11 3.57 11.7 3.72 11.94C4.44 13.15 5.59 12.81 6.05 12.6C6.12 12.08 6.33 11.73 6.56 11.53C4.78 11.33 2.92 10.64 2.92 7.58C2.92 6.71 3.23 5.99 3.74 5.43C3.66 5.23 3.38 4.41 3.82 3.31C3.82 3.31 4.49 3.1 6.02 4.13C6.66 3.95 7.34 3.86 8.02 3.86C8.7 3.86 9.38 3.95 10.02 4.13C11.55 3.09 12.22 3.31 12.22 3.31C12.66 4.41 12.38 5.23 12.3 5.43C12.81 5.99 13.12 6.7 13.12 7.58C13.12 10.65 11.25 11.33 9.47 11.53C9.76 11.78 10.01 12.26 10.01 13.01C10.01 14.08 10 14.94 10 15.21C10 15.42 10.15 15.67 10.55 15.59C13.71 14.53 16 11.53 16 8C16 3.58 12.42 0 8 0Z"></path>
-                                </svg>
-                            </a>
-                            <!--/-->
-                            <!--$-->
-                            <a target="_blank" rel="noopener noreferrer" aria-label="Discord" href="https://discord.com/invite/solidjs" class="group inactive" link="true">
-                                <svg aria-hidden="true" class="h-6 w-6 fill-slate-800 dark:fill-slate-200 group-hover:dark:fill-white dark:group-hover:fill-slate-300" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                                    <path d="M13.545 2.907a13.2 13.2 0 0 0-3.257-1.011.05.05 0 0 0-.052.025c-.141.25-.297.577-.406.833a12.2 12.2 0 0 0-3.658 0 8 8 0 0 0-.412-.833.05.05 0 0 0-.052-.025c-1.125.194-2.22.534-3.257 1.011a.04.04 0 0 0-.021.018C.356 6.024-.213 9.047.066 12.032q.003.022.021.037a13.3 13.3 0 0 0 3.995 2.02.05.05 0 0 0 .056-.019q.463-.63.818-1.329a.05.05 0 0 0-.01-.059l-.018-.011a9 9 0 0 1-1.248-.595.05.05 0 0 1-.02-.066l.015-.019q.127-.095.248-.195a.05.05 0 0 1 .051-.007c2.619 1.196 5.454 1.196 8.041 0a.05.05 0 0 1 .053.007q.121.1.248.195a.05.05 0 0 1-.004.085 8 8 0 0 1-1.249.594.05.05 0 0 0-.03.03.05.05 0 0 0 .003.041c.24.465.515.909.817 1.329a.05.05 0 0 0 .056.019 13.2 13.2 0 0 0 4.001-2.02.05.05 0 0 0 .021-.037c.334-3.451-.559-6.449-2.366-9.106a.03.03 0 0 0-.02-.019m-8.198 7.307c-.789 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.45.73 1.438 1.613 0 .888-.637 1.612-1.438 1.612m5.316 0c-.788 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.451.73 1.438 1.613 0 .888-.631 1.612-1.438 1.612"></path>
-                                </svg>
-                            </a>
-                            <!--/-->
-                            <!--$-->
-                            <button type="button" id="dropdownmenu-0-0-0-0-0-0-0-0-0-1-0-0-0-0-0-0-0-1-0-2-0-0-0-2-0-10-0-0-trigger" aria-haspopup="true" aria-expanded="false" data-closed="" class="flex h-6 w-6 items-center justify-center rounded-lg shadow-md shadow-black/5 ring-1 ring-black/10 dark:bg-slate-800 dark:ring-inset dark:ring-white/60 shrink-0 "></button>
-                            <!--/-->
-                            <!--$-->
-                            <!--/-->
+                    </article>
+                    <article class="flex flex-col ml-5 w-[33%] max-md:ml-0 max-md:w-full">
+                        <div class="flex flex-col grow self-stretch p-6 border-l border-gray-300 border-solid max-md:px-5 max-md:max-w-full">
+                            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/1aed1c2baf4e54d1789bee230be7491ef1414edc8a59bbbfd9bfc5513e52c144?apiKey=23c357ad83b14e24b63f8828469e9c31&" alt="Feature Icon 2" class="w-8 aspect-square" />
+                            <h4 class="mt-8 text-3xl font-semibold text-neutral-800">Faster</h4>
+                            <p class="mt-2 text-base leading-6 text-gray-500">3x faster from template to nodes</p>
                         </div>
+                    </article>
+                    <article class="flex flex-col ml-5 w-[33%] max-md:ml-0 max-md:w-full">
+                        <div class="flex flex-col grow self-stretch p-6 border-l border-gray-300 border-solid max-md:px-5 max-md:max-w-full">
+                            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/153f46ffc23dcf1e378d6865106758aafdee5befa0990a8993039b9789c1343e?apiKey=23c357ad83b14e24b63f8828469e9c31&" alt="Feature Icon 3" class="w-8 aspect-square" />
+                            <h4 class="mt-8 text-3xl font-semibold text-neutral-800">Ready Now</h4>
+                            <p class="mt-2 text-base leading-6 text-gray-500">Fully loaded with all the features</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+            <div class="flex gap-4 justify-center self-center mt-8 text-base font-medium leading-6">
+                <a href="https://lightning-tv.github.io/solid-demo-app/#/" class="justify-center px-5 py-3 text-blue-600 rounded-lg border border-blue-600 border-solid">Explore Demo</a>
+                <a href="https://lightning-tv.github.io/solid/#/intro/getting_started" class="justify-center px-5 py-3 text-white bg-blue-600 rounded-lg">Get Started</a>
+            </div>
+        </section>
+        <section class="flex justify-center items-center px-16 py-16 w-full bg-white max-md:px-5 max-md:max-w-full">
+            <article class="flex flex-col p-16 w-full bg-gray-100 max-w-[1062px] rounded-[40px] max-md:px-5 max-md:max-w-full rounded-3xl">
+                <h2 class="text-3xl font-semibold leading-9 text-center text-zinc-900 max-md:max-w-full">VueJS provides Power and Flexibility for LightningJS</h2>
+                <p class="mt-6 text-lg leading-7 text-center text-zinc-500 max-md:max-w-full">VueJS provides a powerful and flexible foundation for building TV apps with Lightning JS. Its strong community, rich ecosystem, and gradual adoption approach make it a versatile choice.</p>
+                <button class="justify-center self-center px-5 py-3 mt-6 text-base font-medium leading-6 text-white bg-blue-600 rounded-lg">Get Started (Beta)</button>
+            </article>
+        </section>
+        <section class="flex flex-col items-start px-20 py-16 w-full bg-white max-md:px-5 max-md:max-w-full">
+            <h2 class="text-sm font-bold leading-5 text-blue-600 uppercase tracking-[3.5px] max-md:max-w-full">Why choose us</h2>
+            <div class="self-stretch mt-8 max-md:max-w-full">
+                <div class="flex gap-5 max-md:flex-col max-md:gap-0">
+                    <article class="flex flex-col w-6/12 max-md:ml-0 max-md:w-full">
+                        <div class="flex flex-col grow self-stretch p-6 border-r border-gray-300 border-solid max-md:px-5 max-md:max-w-full">
+                            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/81ad053bc33fb91f68f7bee42ece7111825cc262a4fe6f7d54df905925925d77?apiKey=23c357ad83b14e24b63f8828469e9c31&" alt="Reason Icon 1" class="w-8 aspect-square" />
+                            <h4 class="mt-8 text-2xl font-semibold leading-9 text-neutral-800 max-md:max-w-full">Performance</h4>
+                            <p class="mt-2 text-base leading-6 text-zinc-500 max-md:max-w-full">Experience blazing-fast performance with LightningJS's WebGL renderer and SolidJS's reactive updates. This translates to a smooth user experience on all devices, especially low-end ones.</p>
+                        </div>
+                    </article>
+                    <article class="flex flex-col ml-5 w-6/12 max-md:ml-0 max-md:w-full">
+                        <div class="flex flex-col grow self-stretch p-6 border-l border-gray-300 border-solid max-md:px-5 max-md:max-w-full">
+                            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/23562e407eb5268c0a2551cb6213353b8cf40e1622d6bb33496236fa35b9e1dd?apiKey=23c357ad83b14e24b63f8828469e9c31&" alt="Reason Icon 2" class="w-8 aspect-square" />
+                            <h4 class="mt-8 text-2xl font-semibold leading-9 text-neutral-800 max-md:max-w-full">Reliability</h4>
+                            <p class="mt-2 text-base leading-6 text-zinc-500 max-md:max-w-full">Build rock-solid TV apps with LightningJS's well-established foundation and SolidJS (production-ready) or VueJS's (large, active community) backing. Focus on creating your app knowing the framework won't be your weak link.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+            <div class="self-stretch max-md:max-w-full">
+                <div class="flex gap-5 max-md:flex-col max-md:gap-0">
+                    <article class="flex flex-col w-6/12 max-md:ml-0 max-md:w-full">
+                        <div class="flex flex-col grow self-stretch p-6 border-t border-r border-gray-300 border-solid max-md:px-5 max-md:max-w-full">
+                            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/51d7c194cdf2fb33fc5a28968c56ef3134d31668bc9f1eca3365cba5e3750e0b?apiKey=23c357ad83b14e24b63f8828469e9c31&" alt="Reason Icon 3" class="w-8 aspect-square" />
+                            <h4 class="mt-8 text-2xl font-semibold leading-9 text-neutral-800 max-md:max-w-full">Community</h4>
+                            <p class="mt-2 text-base leading-6 text-zinc-500 max-md:max-w-full">Never feel alone. LightningJS offers a supportive community, and both SolidJS (growing rapidly) and VueJS (massive community) boast extensive resources and helpful developers.</p>
+                        </div>
+                    </article>
+                    <article class="flex flex-col ml-5 w-6/12 max-md:ml-0 max-md:w-full">
+                        <div class="flex flex-col grow self-stretch p-6 border-t border-l border-gray-300 border-solid max-md:px-5 max-md:max-w-full">
+                            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/0625424e901a1b1848c81511b7575d795b231d88d863c1e05ba572e7aac01a04?apiKey=23c357ad83b14e24b63f8828469e9c31&" alt="Reason Icon 4" class="w-8 aspect-square" />
+                            <h4 class="mt-8 text-2xl font-semibold leading-9 text-neutral-800 max-md:max-w-full">Innovation</h4>
+                            <p class="mt-2 text-base leading-6 text-zinc-500 max-md:max-w-full">Stay ahead of the curve. LightningJS embraces innovation, continuously evolving to meet the latest TV development needs. SolidJS offers a unique, performant approach, while VueJS has a vibrant ecosystem pushing the boundaries of web development.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <section id="contact" class="flex flex-col justify-center items-center px-6 py-16 w-full text-sm leading-5 bg-gray-100 max-md:px-5 max-md:max-w-full">
+            <h2 class="font-bold text-blue-600 uppercase leading-[140%] tracking-[3.5px]">Contact Us</h2>
+            <h3 class="mt-4 text-4xl font-semibold text-center leading-[50.4px] text-zinc-900 max-md:max-w-full">Don’t know where to begin?</h3>
+            <p class="mt-4 text-xl leading-7 text-center text-gray-500 w-[629px] max-md:max-w-full">Whether you have a question, an idea, or need expert advice, our team is ready to assist you.</p>
+            <form class="mt-6 font-medium text-gray-900 max-md:max-w-full w-[629px] max-md:max-w-full">
+                <label for="name" class="sr-only">Your name</label>
+                <input type="text" id="name" name="name" class="justify-center px-4 py-2 mt-2 max-w-full text-gray-500 bg-gray-50 rounded-lg border border-gray-300 border-solid" placeholder="e.g. Burhan yudha" aria-label="Your name" />
+                <div class="flex gap-5 mt-6 max-w-full max-md:flex-wrap">
+                    <div class="flex flex-col flex-1">
+                        <label for="email" class="font-medium text-gray-900">Your Email</label>
+                        <input type="email" id="email" name="email" class="justify-center px-4 py-2 mt-2 text-gray-500 bg-gray-50 rounded-lg border border-gray-300 border-solid" placeholder="e.g. Burhan yudha" aria-label="Your Email" />
                     </div>
-                </header>
-                <!--/-->
-                <!--$-->
-                <div class="overflow-hidden bg-sky-100/80 border border-sky-200 dark:border-none dark:bg-slate-900 mb-10 ">
-                    <div class="py-10 sm:px-2 lg:relative">
-                        <div class="mx-auto grid max-w-2xl grid-cols-1 items-center gap-x-8 gap-y-16 px-4 lg:max-w-8xl lg:grid-cols-2 lg:px-8 xl:gap-x-16 xl:px-12">
-                            <div class="relative md:text-center lg:text-left">
-                                <div class="relative">
-                                    <h2 class="inline bg-gradient-to-r dark:from-indigo-200 dark:via-blue-400 dark:to-indigo-200 from-blue-700 via-slate-800 to-blue-700 bg-clip-text font-bold text-5xl tracking-tight text-transparent">Effortless UIs with Reactive Precision.</h2>
-                                    <p class="mt-3 text-2xl tracking-tight dark:text-slate-300">SolidJS is a modern JavaScript framework for today's web.</p>
-                                    <div class="mt-8 flex gap-4 md:justify-center lg:justify-start">
-                                        <!--$-->
-                                        <a class="inactive rounded-full bg-blue-300 py-2 px-4 text-sm font-semibold text-slate-900 hover:bg-blue-200 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-300/50 active:bg-blue-500" variant="primary" href="/quick-start" link="true">Get started</a>
-                                        <!--/-->
-                                        <!--$-->
-                                        <a target="_blank" rel="noopener noreferrer" class="inactive rounded-full bg-slate-800 py-2 px-4 text-sm font-semibold text-white hover:bg-slate-700 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/50 active:text-slate-300" variant="secondary" href="https://discord.com/invite/solidjs" link="true">Join the community</a>
-                                        <!--/-->
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="relative lg:static xl:pl-10">
-                                <div class="relative">
-                                    <div class="absolute inset-0 rounded-2xl bg-gradient-to-tr from-blue-500 dark:from-blue-300 via-blue-500/70 dark:via-blue-300/70 to-blue-300 opacity-10 blur-lg dark:bg-white"></div>
-                                    <div class="absolute inset-0 rounded-2xl bg-gradient-to-tr from-blue-300 via-blue-300/70 to-blue-300 opacity-10"></div>
-                                    <div class="relative rounded-2xl bg-[#0A101F]/80 ring-1 ring-blue-200/10 backdrop-blur">
-                                        <div class="absolute -top-px left-20 right-11 h-px bg-gradient-to-r from-blue-300/0 via-blue-300/70 to-blue-300/0"></div>
-                                        <div class="absolute -bottom-px left-11 right-20 h-px bg-gradient-to-r from-blue-400/0 via-blue-800 dark:via-blue-400 to-blue-400/0"></div>
-                                        <div class="pl-4 pt-4">
-                                            <!--$-->
-                                            <svg aria-hidden="true" viewBox="0 0 42 10" fill="none" class="h-2.5 w-auto stroke-slate-500/30 ">
-                                                <circle cx="5" cy="5" r="4.5"></circle>
-                                                <circle cx="21" cy="5" r="4.5"></circle>
-                                                <circle cx="37" cy="5" r="4.5"></circle>
-                                            </svg>
-                                            <!--/-->
-                                            <div class="mt-4 flex space-x-2 text-xs">
-                                                <div class="flex h-6 rounded-full border dark:border-none border-blue-400 shadow-sm bg-gradient-to-r from-blue-400/30 via-blue-400 to-blue-400/30 p-px font-semibold text-blue-300 ">
-                                                    <div class="flex items-center rounded-full px-2.5 bg-slate-800">Counter.jsx</div>
-                                                </div>
-                                            </div>
-                                            <div class="mt-6 flex items-start px-1 text-sm">
-                                                <div aria-hidden="true" class="select-none border-r border-slate-300/5 pr-4 font-mono text-slate-300 pb-6">
-                                                    <pre class="pb-px">01</pre>
-                                                    <pre class="pb-px">02</pre>
-                                                    <pre class="pb-px">03</pre>
-                                                    <pre class="pb-px">04</pre>
-                                                    <pre class="pb-px">05</pre>
-                                                    <pre class="pb-px">06</pre>
-                                                    <pre class="pb-px">07</pre>
-                                                    <pre class="pb-px">08</pre>
-                                                    <pre class="pb-px">09</pre>
-                                                    <pre class="pb-px">10</pre>
-                                                    <pre class="pb-px">11</pre>
-                                                    <pre class="pb-px">12</pre>
-                                                    <pre class="pb-px">13</pre>
-                                                </div>
-                                                <div class="flex overflow-x-auto px-4 min-h-[18em] text-white custom-scrollbar"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="flex flex-col flex-1">
+                        <label for="phone" class="font-medium text-gray-900">Your Phone</label>
+                        <input type="tel" id="phone" name="phone" class="justify-center px-4 py-2 mt-2 text-gray-500 bg-gray-50 rounded-lg border border-gray-300 border-solid" placeholder="e.g. Burhan yudha" aria-label="Your Phone" />
                     </div>
                 </div>
-                <!--/-->
-                <div class="relative mx-auto flex max-w-8xl flex-auto justify-center custom-scrollbar pt-10">
-                    <!--$-->
-                    <div class="hidden md:relative lg:block lg:flex-none">
-                        <div class="absolute inset-y-0 right-0 w-[50vw] dark:hidden"></div>
-                        <div class="absolute bottom-0 right-0 top-16 hidden h-12 w-px bg-gradient-to-t from-slate-800 dark:block"></div>
-                        <div class="absolute bottom-0 right-0 top-28 hidden w-px bg-slate-800 dark:block"></div>
-                        <!--$-->
-                        <div class="sticky top-[4.75rem] h-[calc(100vh-7rem)] w-64 pl-0.5 pr-2 xl:w-72">
-                            <nav class="overflow-y-auto custom-scrollbar h-full md:h-[calc(100vh-7rem)] pb-20">
-                                <div data-orientation="horizontal" id="tabs-0-0-0-0-0-0-0-0-0-1-0-0-0-0-0-0-0-1-0-2-0-0-0-4-1-0-0-1-0-0-0-1-0">
-                                    <div role="tablist" aria-orientation="horizontal" data-orientation="horizontal" class="sticky top-0 grid grid-cols-2 w-full z-10 md:dark:bg-slate-900 md:bg-slate-50 ">
-                                        <button id="tabs-0-0-0-0-0-0-0-0-0-1-0-0-0-0-0-0-0-1-0-2-0-0-0-4-1-0-0-1-0-0-0-1-0-trigger-learn" role="tab" aria-selected="true" data-key="learn" data-orientation="horizontal" data-selected="" type="button" class="inline-block py-3 outline-none hover:bg-blue-500/30 dark:hover:bg-blue-300/20 dark:focus-visible:bg-blue-800 dark:text-slate-100 hover:font-bold font-medium ">Learn</button>
-                                        <button id="tabs-0-0-0-0-0-0-0-0-0-1-0-0-0-0-0-0-0-1-0-2-0-0-0-4-1-0-0-1-0-0-0-1-0-trigger-reference" role="tab" aria-selected="false" data-key="reference" data-orientation="horizontal" type="button" class="inline-block py-3 outline-none hover:bg-blue-500/30 dark:hover:bg-blue-300/20 dark:focus-visible:bg-blue-800 dark:text-slate-100 hover:font-bold font-medium ">Reference</button>
-                                        <div role="presentation" style="" data-orientation="horizontal" class="absolute bottom-0 bg-blue-500 dark:bg-blue-500 transition-all duration-250 h-[2px] "></div>
-                                    </div>
-                                    <div id="tabs-0-0-0-0-0-0-0-0-0-1-0-0-0-0-0-0-0-1-0-2-0-0-0-4-1-0-0-1-0-0-0-1-0-content-learn" role="tabpanel" tabIndex="0" data-orientation="horizontal" data-selected="" class="w-full relative mt-5 ">
-                                        <ul role="list" class="space-y-3 px-4">
-                                            <li class="relative">
-                                                <a href="/quick-start" class="hover:text-blue-700 dark:hover:text-blue-300 block w-full lg:text-sm pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-700 before:hidden before:bg-blue-600 before:dark:bg-blue-200 hover:text-blue-700 hover:font-bold hover:before:block dark:text-slate-300  inactive" link="true">Quick start</a>
-                                            </li>
-                                            <li>
-                                                <span class="font-semibold text-slate-800 dark:text-slate-100">Concepts</span>
-                                                <ul role="list" class="ml-2 mt-2 space-y-3 border-l-[1px] border-slate-400 dark:border-slate-700 lg:border-slate-400">
-                                                    <li class="relative">
-                                                        <a href="/concepts/intro-to-reactivity" class="hover:text-blue-700 dark:hover:text-blue-300 block w-full lg:text-sm pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-700 before:hidden before:bg-blue-600 before:dark:bg-blue-200 hover:text-blue-700 hover:font-bold hover:before:block dark:text-slate-300  inactive" link="true">Intro to reactivity</a>
-                                                    </li>
-                                                    <li class="relative">
-                                                        <a href="/concepts/understanding-jsx" class="hover:text-blue-700 dark:hover:text-blue-300 block w-full lg:text-sm pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-700 before:hidden before:bg-blue-600 before:dark:bg-blue-200 hover:text-blue-700 hover:font-bold hover:before:block dark:text-slate-300  inactive" link="true">Understanding JSX</a>
-                                                    </li>
-                                                    <li>
-                                                        <div data-expanded="" id="collapsible-0-0-0-0-0-0-0-0-0-1-0-0-0-0-0-0-0-1-0-2-0-0-0-4-1-0-0-1-0-0-0-1-1-0-0-0-0-2-0-0-0-1-1-0-3-3-0">
-                                                            <button type="button" aria-expanded="true" data-expanded="" class="relative flex justify-between hover:cursor-pointer w-full pl-3.5 dark:text-slate-300 group ">
-                                                                <span class="font-semibold dark:text-slate-100">Components</span>
-                                                                <svg viewBox="0 0 24 24" fill="currentColor" stroke="none" class="h-4 my-auto transition-transform  kb-group-closed:rotate-180 ">
-                                                                    <path fill-rule="evenodd" d="M12.53 16.28a.75.75 0 01-1.06 0l-7.5-7.5a.75.75 0 011.06-1.06L12 14.69l6.97-6.97a.75.75 0 111.06 1.06l-7.5 7.5z" clip-rule="evenodd"></path>
-                                                                </svg>
-                                                            </button>
-                                                            <div id="collapsible-0-0-0-0-0-0-0-0-0-1-0-0-0-0-0-0-0-1-0-2-0-0-0-4-1-0-0-1-0-0-0-1-1-0-0-0-0-2-0-0-0-1-1-0-3-3-0-content" style="" data-expanded="" class="navigation_collapsible ">
-                                                                <ul role="list" class="ml-4 mt-3 space-y-3 border-l-[1px] border-slate-400 dark:border-slate-700 dark:lg:border-slate-700">
-                                                                    <li class="relative">
-                                                                        <a href="/concepts/components/basics" class="hover:text-blue-700 dark:hover:text-blue-300 block w-full lg:text-sm pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-700 before:hidden before:bg-blue-600 before:dark:bg-blue-200 hover:text-blue-700 hover:font-bold hover:before:block dark:text-slate-300  inactive" link="true">Basics</a>
-                                                                    </li>
-                                                                    <li class="relative">
-                                                                        <a href="/concepts/components/class-style" class="hover:text-blue-700 dark:hover:text-blue-300 block w-full lg:text-sm pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-700 before:hidden before:bg-blue-600 before:dark:bg-blue-200 hover:text-blue-700 hover:font-bold hover:before:block dark:text-slate-300  inactive" link="true">Class and style</a>
-                                                                    </li>
-                                                                    <li class="relative">
-                                                                        <a href="/concepts/components/event-handlers" class="hover:text-blue-700 dark:hover:text-blue-300 block w-full lg:text-sm pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-700 before:hidden before:bg-blue-600 before:dark:bg-blue-200 hover:text-blue-700 hover:font-bold hover:before:block dark:text-slate-300  inactive" link="true">Event handlers</a>
-                                                                    </li>
-                                                                    <li class="relative">
-                                                                        <a href="/concepts/components/props" class="hover:text-blue-700 dark:hover:text-blue-300 block w-full lg:text-sm pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-700 before:hidden before:bg-blue-600 before:dark:bg-blue-200 hover:text-blue-700 hover:font-bold hover:before:block dark:text-slate-300  inactive" link="true">Props</a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li class="relative">
-                                                        <a href="/concepts/signals" class="hover:text-blue-700 dark:hover:text-blue-300 block w-full lg:text-sm pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-700 before:hidden before:bg-blue-600 before:dark:bg-blue-200 hover:text-blue-700 hover:font-bold hover:before:block dark:text-slate-300  inactive" link="true">Signals</a>
-                                                    </li>
-                                                    <li>
-                                                        <div data-expanded="" id="collapsible-0-0-0-0-0-0-0-0-0-1-0-0-0-0-0-0-0-1-0-2-0-0-0-4-1-0-0-1-0-0-0-1-1-0-0-0-0-2-0-0-0-1-1-0-3-6-0">
-                                                            <button type="button" aria-expanded="true" data-expanded="" class="relative flex justify-between hover:cursor-pointer w-full pl-3.5 dark:text-slate-300 group ">
-                                                                <span class="font-semibold dark:text-slate-100">Control Flow</span>
-                                                                <svg viewBox="0 0 24 24" fill="currentColor" stroke="none" class="h-4 my-auto transition-transform  kb-group-closed:rotate-180 ">
-                                                                    <path fill-rule="evenodd" d="M12.53 16.28a.75.75 0 01-1.06 0l-7.5-7.5a.75.75 0 011.06-1.06L12 14.69l6.97-6.97a.75.75 0 111.06 1.06l-7.5 7.5z" clip-rule="evenodd"></path>
-                                                                </svg>
-                                                            </button>
-                                                            <div id="collapsible-0-0-0-0-0-0-0-0-0-1-0-0-0-0-0-0-0-1-0-2-0-0-0-4-1-0-0-1-0-0-0-1-1-0-0-0-0-2-0-0-0-1-1-0-3-6-0-content" style="" data-expanded="" class="navigation_collapsible ">
-                                                                <ul role="list" class="ml-4 mt-3 space-y-3 border-l-[1px] border-slate-400 dark:border-slate-700 dark:lg:border-slate-700">
-                                                                    <li class="relative">
-                                                                        <a href="/concepts/control-flow/conditional-rendering" class="hover:text-blue-700 dark:hover:text-blue-300 block w-full lg:text-sm pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-700 before:hidden before:bg-blue-600 before:dark:bg-blue-200 hover:text-blue-700 hover:font-bold hover:before:block dark:text-slate-300  inactive" link="true">Conditional rendering</a>
-                                                                    </li>
-                                                                    <li class="relative">
-                                                                        <a href="/concepts/control-flow/dynamic" class="hover:text-blue-700 dark:hover:text-blue-300 block w-full lg:text-sm pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-700 before:hidden before:bg-blue-600 before:dark:bg-blue-200 hover:text-blue-700 hover:font-bold hover:before:block dark:text-slate-300  inactive" link="true">Dynamic</a>
-                                                                    </li>
-                                                                    <li class="relative">
-                                                                        <a href="/concepts/control-flow/list-rendering" class="hover:text-blue-700 dark:hover:text-blue-300 block w-full lg:text-sm pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-700 before:hidden before:bg-blue-600 before:dark:bg-blue-200 hover:text-blue-700 hover:font-bold hover:before:block dark:text-slate-300  inactive" link="true">List rendering</a>
-                                                                    </li>
-                                                                    <li class="relative">
-                                                                        <a href="/concepts/control-flow/portal" class="hover:text-blue-700 dark:hover:text-blue-300 block w-full lg:text-sm pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-700 before:hidden before:bg-blue-600 before:dark:bg-blue-200 hover:text-blue-700 hover:font-bold hover:before:block dark:text-slate-300  inactive" link="true">Portal</a>
-                                                                    </li>
-                                                                    <li class="relative">
-                                                                        <a href="/concepts/control-flow/error-boundary" class="hover:text-blue-700 dark:hover:text-blue-300 block w-full lg:text-sm pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-700 before:hidden before:bg-blue-600 before:dark:bg-blue-200 hover:text-blue-700 hover:font-bold hover:before:block dark:text-slate-300  inactive" link="true">Error boundary</a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li class="relative">
-                                                        <a href="/concepts/effects" class="hover:text-blue-700 dark:hover:text-blue-300 block w-full lg:text-sm pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-700 before:hidden before:bg-blue-600 before:dark:bg-blue-200 hover:text-blue-700 hover:font-bold hover:before:block dark:text-slate-300  inactive" link="true">Effects</a>
-                                                    </li>
-                                                    <li>
-                                                        <div data-expanded="" id="collapsible-0-0-0-0-0-0-0-0-0-1-0-0-0-0-0-0-0-1-0-2-0-0-0-4-1-0-0-1-0-0-0-1-1-0-0-0-0-2-0-0-0-1-1-0-3-9-0">
-                                                            <button type="button" aria-expanded="true" data-expanded="" class="relative flex justify-between hover:cursor-pointer w-full pl-3.5 dark:text-slate-300 group ">
-                                                                <span class="font-semibold dark:text-slate-100">Derived Values</span>
-                                                                <svg viewBox="0 0 24 24" fill="currentColor" stroke="none" class="h-4 my-auto transition-transform  kb-group-closed:rotate-180 ">
-                                                                    <path fill-rule="evenodd" d="M12.53 16.28a.75.75 0 01-1.06 0l-7.5-7.5a.75.75 0 011.06-1.06L12 14.69l6.97-6.97a.75.75 0 111.06 1.06l-7.5 7.5z" clip-rule="evenodd"></path>
-                                                                </svg>
-                                                            </button>
-                                                            <div id="collapsible-0-0-0-0-0-0-0-0-0-1-0-0-0-0-0-0-0-1-0-2-0-0-0-4-1-0-0-1-0-0-0-1-1-0-0-0-0-2-0-0-0-1-1-0-3-9-0-content" style="" data-expanded="" class="navigation_collapsible ">
-                                                                <ul role="list" class="ml-4 mt-3 space-y-3 border-l-[1px] border-slate-400 dark:border-slate-700 dark:lg:border-slate-700">
-                                                                    <li class="relative">
-                                                                        <a href="/concepts/derived-values/derived-signals" class="hover:text-blue-700 dark:hover:text-blue-300 block w-full lg:text-sm pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-700 before:hidden before:bg-blue-600 before:dark:bg-blue-200 hover:text-blue-700 hover:font-bold hover:before:block dark:text-slate-300  inactive" link="true">Derived signals</a>
-                                                                    </li>
-                                                                    <li class="relative">
-                                                                        <a href="/concepts/derived-values/memos" class="hover:text-blue-700 dark:hover:text-blue-300 block w-full lg:text-sm pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-700 before:hidden before:bg-blue-600 before:dark:bg-blue-200 hover:text-blue-700 hover:font-bold hover:before:block dark:text-slate-300  inactive" link="true">Memos</a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li class="relative">
-                                                        <a href="/concepts/context" class="hover:text-blue-700 dark:hover:text-blue-300 block w-full lg:text-sm pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-700 before:hidden before:bg-blue-600 before:dark:bg-blue-200 hover:text-blue-700 hover:font-bold hover:before:block dark:text-slate-300  inactive" link="true">Context</a>
-                                                    </li>
-                                                    <li class="relative">
-                                                        <a href="/concepts/stores" class="hover:text-blue-700 dark:hover:text-blue-300 block w-full lg:text-sm pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-700 before:hidden before:bg-blue-600 before:dark:bg-blue-200 hover:text-blue-700 hover:font-bold hover:before:block dark:text-slate-300  inactive" link="true">Stores</a>
-                                                    </li>
-                                                    <li class="relative">
-                                                        <a href="/concepts/refs" class="hover:text-blue-700 dark:hover:text-blue-300 block w-full lg:text-sm pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-700 before:hidden before:bg-blue-600 before:dark:bg-blue-200 hover:text-blue-700 hover:font-bold hover:before:block dark:text-slate-300  inactive" link="true">Refs</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <span class="font-semibold text-slate-800 dark:text-slate-100">Advanced Concepts</span>
-                                                <ul role="list" class="ml-2 mt-2 space-y-3 border-l-[1px] border-slate-400 dark:border-slate-700 lg:border-slate-400">
-                                                    <li class="relative">
-                                                        <a href="/advanced-concepts/fine-grained-reactivity" class="hover:text-blue-700 dark:hover:text-blue-300 block w-full lg:text-sm pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-700 before:hidden before:bg-blue-600 before:dark:bg-blue-200 hover:text-blue-700 hover:font-bold hover:before:block dark:text-slate-300  inactive" link="true">Fine-grained reactivity</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <span class="font-semibold text-slate-800 dark:text-slate-100">Guides</span>
-                                                <ul role="list" class="ml-2 mt-2 space-y-3 border-l-[1px] border-slate-400 dark:border-slate-700 lg:border-slate-400">
-                                                    <li class="relative">
-                                                        <a href="/guides/styling-your-components" class="hover:text-blue-700 dark:hover:text-blue-300 block w-full lg:text-sm pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-700 before:hidden before:bg-blue-600 before:dark:bg-blue-200 hover:text-blue-700 hover:font-bold hover:before:block dark:text-slate-300  inactive" link="true">Styling your components</a>
-                                                    </li>
-                                                    <li class="relative">
-                                                        <a href="/guides/state-management" class="hover:text-blue-700 dark:hover:text-blue-300 block w-full lg:text-sm pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-700 before:hidden before:bg-blue-600 before:dark:bg-blue-200 hover:text-blue-700 hover:font-bold hover:before:block dark:text-slate-300  inactive" link="true">State management</a>
-                                                    </li>
-                                                    <li class="relative">
-                                                        <a href="/guides/routing-and-navigation" class="hover:text-blue-700 dark:hover:text-blue-300 block w-full lg:text-sm pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-700 before:hidden before:bg-blue-600 before:dark:bg-blue-200 hover:text-blue-700 hover:font-bold hover:before:block dark:text-slate-300  inactive" link="true">Routing &amp;navigation</a>
-                                                    </li>
-                                                    <li class="relative">
-                                                        <a href="/guides/complex-state-management" class="hover:text-blue-700 dark:hover:text-blue-300 block w-full lg:text-sm pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-700 before:hidden before:bg-blue-600 before:dark:bg-blue-200 hover:text-blue-700 hover:font-bold hover:before:block dark:text-slate-300  inactive" link="true">Complex state management</a>
-                                                    </li>
-                                                    <li class="relative">
-                                                        <a href="/guides/fetching-data" class="hover:text-blue-700 dark:hover:text-blue-300 block w-full lg:text-sm pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-700 before:hidden before:bg-blue-600 before:dark:bg-blue-200 hover:text-blue-700 hover:font-bold hover:before:block dark:text-slate-300  inactive" link="true">Fetching data</a>
-                                                    </li>
-                                                    <li class="relative">
-                                                        <a href="/guides/testing" class="hover:text-blue-700 dark:hover:text-blue-300 block w-full lg:text-sm pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-700 before:hidden before:bg-blue-600 before:dark:bg-blue-200 hover:text-blue-700 hover:font-bold hover:before:block dark:text-slate-300  inactive" link="true">Testing</a>
-                                                    </li>
-                                                    <li class="relative">
-                                                        <a href="/guides/deploying-your-app" class="hover:text-blue-700 dark:hover:text-blue-300 block w-full lg:text-sm pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-700 before:hidden before:bg-blue-600 before:dark:bg-blue-200 hover:text-blue-700 hover:font-bold hover:before:block dark:text-slate-300  inactive" link="true">Deploy your app</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <span class="font-semibold text-slate-800 dark:text-slate-100">Configuration</span>
-                                                <ul role="list" class="ml-2 mt-2 space-y-3 border-l-[1px] border-slate-400 dark:border-slate-700 lg:border-slate-400">
-                                                    <li class="relative">
-                                                        <a href="/configuration/environment-variables" class="hover:text-blue-700 dark:hover:text-blue-300 block w-full lg:text-sm pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-700 before:hidden before:bg-blue-600 before:dark:bg-blue-200 hover:text-blue-700 hover:font-bold hover:before:block dark:text-slate-300  inactive" link="true">Environment variables</a>
-                                                    </li>
-                                                    <li class="relative">
-                                                        <a href="/configuration/typescript" class="hover:text-blue-700 dark:hover:text-blue-300 block w-full lg:text-sm pl-3.5 before:pointer-events-none before:absolute before:-left-1 before:top-1/2 before:h-1.5 before:w-1.5 before:-translate-y-1/2 before:rounded-full text-slate-700 before:hidden before:bg-blue-600 before:dark:bg-blue-200 hover:text-blue-700 hover:font-bold hover:before:block dark:text-slate-300  inactive" link="true">TypeScript</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </nav>
-                        </div>
-                        <!--/-->
-                    </div>
-                    <!--/-->
-                    <main class="w-full md:max-w-2xl flex-auto px-4 pt-2 md:pb-16 lg:max-w-none prose prose-slate dark:prose-invert dark:text-slate-300">
-                        <article class="px-2 md:px-10 expressive-code-overrides overflow-y-auto">
-                            <h1 id="overview" class="prose-headings:scroll-mt-28 prose-headings:font-normal lg:prose-headings:scroll-mt-[8.5rem] ">
-                                <a class="heading no-underline shadow-[inset_0_calc(-1*(var(--tw-prose-underline-size,0.5px)+2px))_0_0_var(--tw-prose-underline,theme(colors.blue.400))] hover:[--tw-prose-underline-size:4px] dark:[--tw-prose-background:theme(colors.slate.900)] [--tw-prose-background:theme(colors.slate.50)] dark:shadow-[inset_0_calc(-1*var(--tw-prose-underline-size,2px))_0_0_var(--tw-prose-underline,theme(colors.blue.500))] dark:hover:[--tw-prose-underline-size:6px] dark:text-blue-300 text-blue-800 font-semibold active" href="/#overview" link="true" aria-current="page">Overview</a>
-                            </h1>
-                            <p class="my-4 ">Solid is a modern JavaScript framework designed to build responsive and high-performing user interfaces (UI).
-It prioritizes a simple and predictable development experience, making it a great choice for developers of all skill levels.</p>
-                            <hr class="dark:prose-hr:border-slate-800 border-slate-400 my-8">
-                            <h2 id="what-is-solid" class="prose-headings:scroll-mt-28 prose-headings:font-normal lg:prose-headings:scroll-mt-[8.5rem] ">
-                                <a class="heading no-underline shadow-[inset_0_calc(-1*(var(--tw-prose-underline-size,0.5px)+2px))_0_0_var(--tw-prose-underline,theme(colors.blue.400))] hover:[--tw-prose-underline-size:4px] dark:[--tw-prose-background:theme(colors.slate.900)] [--tw-prose-background:theme(colors.slate.50)] dark:shadow-[inset_0_calc(-1*var(--tw-prose-underline-size,2px))_0_0_var(--tw-prose-underline,theme(colors.blue.500))] dark:hover:[--tw-prose-underline-size:6px] dark:text-blue-300 text-blue-800 font-semibold active" href="/#what-is-solid" link="true" aria-current="page">What is Solid?</a>
-                            </h2>
-                            <p class="my-4 ">As a JavaScript framework, Solid embraces reactivity and fine-grained updates.</p>
-                            <p class="my-4 ">Reactivity, in programming, refers to an applications' ability to respond to changes in data or user interactions.</p>
-                            <p class="my-4 ">Traditionally, when a change occurs, the entire web page would need to reload to display the updated information.
-In contrast, when using a fine-grained reactive system, updates are only applied to the parts of the page that need to be updated.</p>
-                            <p class="my-4 ">Solid adopts the concept of fine-grained reactivity, updating only when the data the application depends on changes.
-This decreases work and can result in faster load times and a smoother user experience overall.</p>
-                            <hr class="dark:prose-hr:border-slate-800 border-slate-400 my-8">
-                            <h2 id="advantages-of-using-solid" class="prose-headings:scroll-mt-28 prose-headings:font-normal lg:prose-headings:scroll-mt-[8.5rem] ">
-                                <a class="heading no-underline shadow-[inset_0_calc(-1*(var(--tw-prose-underline-size,0.5px)+2px))_0_0_var(--tw-prose-underline,theme(colors.blue.400))] hover:[--tw-prose-underline-size:4px] dark:[--tw-prose-background:theme(colors.slate.900)] [--tw-prose-background:theme(colors.slate.50)] dark:shadow-[inset_0_calc(-1*var(--tw-prose-underline-size,2px))_0_0_var(--tw-prose-underline,theme(colors.blue.500))] dark:hover:[--tw-prose-underline-size:6px] dark:text-blue-300 text-blue-800 font-semibold active" href="/#advantages-of-using-solid" link="true" aria-current="page">Advantages of using Solid</a>
-                            </h2>
-                            <ul class="pl-6 mb-2 list-disc ">
-                                <li class="mb-2 marker:text-slate-600 dark:marker:text-slate-300 ">
-                                    <p class="my-4 ">
-                                        <b class="font-semibold">Performant</b>
-                                        : Fine-grained reactivity allows Solid to update only what has changed, resulting in faster load times and smoother performance overall.
-                                    </p>
-                                </li>
-                                <li class="mb-2 marker:text-slate-600 dark:marker:text-slate-300 ">
-                                    <p class="my-4 ">
-                                        <b class="font-semibold">Powerful</b>
-                                        : Using less memory and processing power, Solid is capable of creating complex applications without compromising on functionality.
-This also gives developers the flexibility over how and when updates happen.
-                                    </p>
-                                </li>
-                                <li class="mb-2 marker:text-slate-600 dark:marker:text-slate-300 ">
-                                    <p class="my-4 ">
-                                        <b class="font-semibold">Pragmatic</b>
-                                        : Rather than sticking to rigid structures or methods, Solid provides the freedom to choose the strategies and practices that work best for you.
-                                    </p>
-                                </li>
-                                <li class="mb-2 marker:text-slate-600 dark:marker:text-slate-300 ">
-                                    <p class="my-4 ">
-                                        <b class="font-semibold">Productive</b>
-                                        : Regardless of experience level, Solid's clear and predictable API makes developers' work simpler and more efficient.
-                                    </p>
-                                </li>
-                            </ul>
-                            <p class="my-4 ">Solid aims to strike a balance between speed, efficiency, power, and flexibility, all while providing a developer-friendly environment.
-This combination of features makes it a great choice to build responsive and high-performing UIs.</p>
-                            <hr class="dark:prose-hr:border-slate-800 border-slate-400 my-8">
-                            <h2 id="quick-links" class="prose-headings:scroll-mt-28 prose-headings:font-normal lg:prose-headings:scroll-mt-[8.5rem] ">
-                                <a class="heading no-underline shadow-[inset_0_calc(-1*(var(--tw-prose-underline-size,0.5px)+2px))_0_0_var(--tw-prose-underline,theme(colors.blue.400))] hover:[--tw-prose-underline-size:4px] dark:[--tw-prose-background:theme(colors.slate.900)] [--tw-prose-background:theme(colors.slate.50)] dark:shadow-[inset_0_calc(-1*var(--tw-prose-underline-size,2px))_0_0_var(--tw-prose-underline,theme(colors.blue.500))] dark:hover:[--tw-prose-underline-size:6px] dark:text-blue-300 text-blue-800 font-semibold active" href="/#quick-links" link="true" aria-current="page">Quick links</a>
-                            </h2>
-                            <div class="flex flex-col md:grid md:grid-cols-2 md:grid-rows-2 gap-3">
-                                <!--$-->
-                                <div class="group relative rounded-xl border border-blue-600 dark:border-blue-800 dark:bg-transparent">
-                                    <div class="absolute -inset-px rounded-xl border-2 border-transparent opacity-0 [background:linear-gradient(var(--quick-links-hover-bg,theme(colors.sky.200)),var(--quick-links-hover-bg,theme(colors.sky.200)))_padding-box,linear-gradient(to_top,theme(colors.indigo.400),theme(colors.cyan.400),theme(colors.sky.500))_border-box] group-hover:opacity-100 dark:[--quick-links-hover-bg:theme(colors.slate.800)]"></div>
-                                    <div class="relative overflow-hidden rounded-xl px-5 py-4">
-                                        <div class="flex items-center">
-                                            <!--$-->
-                                            <svg viewBox="0 0 24 24" fill="currentColor" stroke="none" class="h-7 w-7 fill-blue-500 ">
-                                                <path d="M11.7 2.805a.75.75 0 01.6 0A60.65 60.65 0 0122.83 8.72a.75.75 0 01-.231 1.337 49.949 49.949 0 00-9.902 3.912l-.003.002-.34.18a.75.75 0 01-.707 0A50.009 50.009 0 007.5 12.174v-.224c0-.131.067-.248.172-.311a54.614 54.614 0 014.653-2.52.75.75 0 00-.65-1.352 56.129 56.129 0 00-4.78 2.589 1.858 1.858 0 00-.859 1.228 49.803 49.803 0 00-4.634-1.527.75.75 0 01-.231-1.337A60.653 60.653 0 0111.7 2.805z"></path>
-                                                <path d="M13.06 15.473a48.45 48.45 0 017.666-3.282c.134 1.414.22 2.843.255 4.285a.75.75 0 01-.46.71 47.878 47.878 0 00-8.105 4.342.75.75 0 01-.832 0 47.877 47.877 0 00-8.104-4.342.75.75 0 01-.461-.71c.035-1.442.121-2.87.255-4.286A48.4 48.4 0 016 13.18v1.27a1.5 1.5 0 00-.14 2.508c-.09.38-.222.753-.397 1.11.452.213.901.434 1.346.661a6.729 6.729 0 00.551-1.608 1.5 1.5 0 00.14-2.67v-.645a48.549 48.549 0 013.44 1.668 2.25 2.25 0 002.12 0z"></path>
-                                                <path d="M4.462 19.462c.42-.419.753-.89 1-1.394.453.213.902.434 1.347.661a6.743 6.743 0 01-1.286 1.794.75.75 0 11-1.06-1.06z"></path>
-                                            </svg>
-                                            <!--/-->
-                                            <div class="text-xl text-slate-900 dark:text-white capitalize no-underline pl-3">
-                                                <a href="https://www.solidjs.com/tutorial/introduction_basics" class="no-underline font-semibold bg-gradient-to-br from-blue-400 to-blue-700 inline-block text-transparent bg-clip-text">
-                                                    <span class="absolute -inset-px rounded-xl"></span>
-                                                    <!--$-->
-                                                    Tutorial
-                                                    <!--/-->
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <p class="text-[0.91rem] pl-1 text-balance text-slate-800 dark:text-slate-300 -mb-2">
-                                        <p class="my-4 ">Learn the basics of Solid through this interactive tutorial.</p>
-</p></div></div>
-<!--/-->
-<!--$-->
-<div class="group relative rounded-xl border border-blue-600 dark:border-blue-800 dark:bg-transparent">
-    <div class="absolute -inset-px rounded-xl border-2 border-transparent opacity-0 [background:linear-gradient(var(--quick-links-hover-bg,theme(colors.sky.200)),var(--quick-links-hover-bg,theme(colors.sky.200)))_padding-box,linear-gradient(to_top,theme(colors.indigo.400),theme(colors.cyan.400),theme(colors.sky.500))_border-box] group-hover:opacity-100 dark:[--quick-links-hover-bg:theme(colors.slate.800)]"></div>
-    <div class="relative overflow-hidden rounded-xl px-5 py-4">
-        <div class="flex items-center">
-            <!--$-->
-            <svg viewBox="0 0 24 24" fill="currentColor" stroke="none" class="h-7 w-7 fill-blue-500 ">
-                <path fill-rule="evenodd" d="M3 6a3 3 0 013-3h12a3 3 0 013 3v12a3 3 0 01-3 3H6a3 3 0 01-3-3V6zm14.25 6a.75.75 0 01-.22.53l-2.25 2.25a.75.75 0 11-1.06-1.06L15.44 12l-1.72-1.72a.75.75 0 111.06-1.06l2.25 2.25c.141.14.22.331.22.53zm-10.28-.53a.75.75 0 000 1.06l2.25 2.25a.75.75 0 101.06-1.06L8.56 12l1.72-1.72a.75.75 0 10-1.06-1.06l-2.25 2.25z" clip-rule="evenodd"></path>
-            </svg>
-            <!--/-->
-            <div class="text-xl text-slate-900 dark:text-white capitalize no-underline pl-3">
-                <a href="https://github.com/solidjs/templates" class="no-underline font-semibold bg-gradient-to-br from-blue-400 to-blue-700 inline-block text-transparent bg-clip-text">
-                    <span class="absolute -inset-px rounded-xl"></span>
-                    <!--$-->
-                    Templates
-                    <!--/-->
-                </a>
-            </div>
-        </div>
-        <p class="text-[0.91rem] pl-1 text-balance text-slate-800 dark:text-slate-300 -mb-2">
-        <p class="my-4 ">Start your first project with a template that fits your needs.</p>
-</p></div></div>
-<!--/-->
-<!--$-->
-<div class="group relative rounded-xl border border-blue-600 dark:border-blue-800 dark:bg-transparent">
-    <div class="absolute -inset-px rounded-xl border-2 border-transparent opacity-0 [background:linear-gradient(var(--quick-links-hover-bg,theme(colors.sky.200)),var(--quick-links-hover-bg,theme(colors.sky.200)))_padding-box,linear-gradient(to_top,theme(colors.indigo.400),theme(colors.cyan.400),theme(colors.sky.500))_border-box] group-hover:opacity-100 dark:[--quick-links-hover-bg:theme(colors.slate.800)]"></div>
-    <div class="relative overflow-hidden rounded-xl px-5 py-4">
-        <div class="flex items-center">
-            <!--$-->
-            <svg viewBox="0 0 24 24" fill="currentColor" stroke="none" class="h-7 w-7 fill-blue-500 ">
-                <path fill-rule="evenodd" d="M8.25 6.75a3.75 3.75 0 117.5 0 3.75 3.75 0 01-7.5 0zM15.75 9.75a3 3 0 116 0 3 3 0 01-6 0zM2.25 9.75a3 3 0 116 0 3 3 0 01-6 0zM6.31 15.117A6.745 6.745 0 0112 12a6.745 6.745 0 016.709 7.498.75.75 0 01-.372.568A12.696 12.696 0 0112 21.75c-2.305 0-4.47-.612-6.337-1.684a.75.75 0 01-.372-.568 6.787 6.787 0 011.019-4.38z" clip-rule="evenodd"></path>
-                <path d="M5.082 14.254a8.287 8.287 0 00-1.308 5.135 9.687 9.687 0 01-1.764-.44l-.115-.04a.563.563 0 01-.373-.487l-.01-.121a3.75 3.75 0 013.57-4.047zM20.226 19.389a8.287 8.287 0 00-1.308-5.135 3.75 3.75 0 013.57 4.047l-.01.121a.563.563 0 01-.373.486l-.115.04c-.567.2-1.156.349-1.764.441z"></path>
-            </svg>
-            <!--/-->
-            <div class="text-xl text-slate-900 dark:text-white capitalize no-underline pl-3">
-                <a href="https://www.solidjs.com/ecosystem" class="no-underline font-semibold bg-gradient-to-br from-blue-400 to-blue-700 inline-block text-transparent bg-clip-text">
-                    <span class="absolute -inset-px rounded-xl"></span>
-                    <!--$-->
-                    Ecosystem
-                    <!--/-->
-                </a>
-            </div>
-        </div>
-        <p class="text-[0.91rem] pl-1 text-balance text-slate-800 dark:text-slate-300 -mb-2">
-        <p class="my-4 ">Explore the Solid ecosystem and find useful tools and libraries.</p>
-</p></div></div>
-<!--/-->
-<!--$-->
-<div class="group relative rounded-xl border border-blue-600 dark:border-blue-800 dark:bg-transparent">
-    <div class="absolute -inset-px rounded-xl border-2 border-transparent opacity-0 [background:linear-gradient(var(--quick-links-hover-bg,theme(colors.sky.200)),var(--quick-links-hover-bg,theme(colors.sky.200)))_padding-box,linear-gradient(to_top,theme(colors.indigo.400),theme(colors.cyan.400),theme(colors.sky.500))_border-box] group-hover:opacity-100 dark:[--quick-links-hover-bg:theme(colors.slate.800)]"></div>
-    <div class="relative overflow-hidden rounded-xl px-5 py-4">
-        <div class="flex items-center">
-            <!--$-->
-            <svg viewBox="0 0 24 24" fill="currentColor" stroke="none" class="h-7 w-7 fill-blue-500 ">
-                <path d="M11.7 2.805a.75.75 0 01.6 0A60.65 60.65 0 0122.83 8.72a.75.75 0 01-.231 1.337 49.949 49.949 0 00-9.902 3.912l-.003.002-.34.18a.75.75 0 01-.707 0A50.009 50.009 0 007.5 12.174v-.224c0-.131.067-.248.172-.311a54.614 54.614 0 014.653-2.52.75.75 0 00-.65-1.352 56.129 56.129 0 00-4.78 2.589 1.858 1.858 0 00-.859 1.228 49.803 49.803 0 00-4.634-1.527.75.75 0 01-.231-1.337A60.653 60.653 0 0111.7 2.805z"></path>
-                <path d="M13.06 15.473a48.45 48.45 0 017.666-3.282c.134 1.414.22 2.843.255 4.285a.75.75 0 01-.46.71 47.878 47.878 0 00-8.105 4.342.75.75 0 01-.832 0 47.877 47.877 0 00-8.104-4.342.75.75 0 01-.461-.71c.035-1.442.121-2.87.255-4.286A48.4 48.4 0 016 13.18v1.27a1.5 1.5 0 00-.14 2.508c-.09.38-.222.753-.397 1.11.452.213.901.434 1.346.661a6.729 6.729 0 00.551-1.608 1.5 1.5 0 00.14-2.67v-.645a48.549 48.549 0 013.44 1.668 2.25 2.25 0 002.12 0z"></path>
-                <path d="M4.462 19.462c.42-.419.753-.89 1-1.394.453.213.902.434 1.347.661a6.743 6.743 0 01-1.286 1.794.75.75 0 11-1.06-1.06z"></path>
-            </svg>
-            <!--/-->
-            <div class="text-xl text-slate-900 dark:text-white capitalize no-underline pl-3">
-                <a href="https://github.com/solidjs/solid-docs-next" class="no-underline font-semibold bg-gradient-to-br from-blue-400 to-blue-700 inline-block text-transparent bg-clip-text">
-                    <span class="absolute -inset-px rounded-xl"></span>
-                    <!--$-->
-                    Contribute
-                    <!--/-->
-                </a>
-            </div>
-        </div>
-        <p class="text-[0.91rem] pl-1 text-balance text-slate-800 dark:text-slate-300 -mb-2">
-        <p class="my-4 ">Help improve Solid by contributing to the documentation.</p>
-</p></div></div>
-<!--/-->
-</div>
-<p class="my-4 ">
-    <em>
-        Find our API documentation under the <b class="font-semibold">Reference</b>
-        tab
-    </em>
-</p>
-<p class="my-4 ">
-    Join the <a target="_blank" rel="noopener noreferrer" href="https://discord.com/invite/solidjs" class="no-underline shadow-[inset_0_calc(-1*(var(--tw-prose-underline-size,0.5px)+2px))_0_0_var(--tw-prose-underline,theme(colors.blue.400))] hover:[--tw-prose-underline-size:4px] dark:[--tw-prose-background:theme(colors.slate.900)] [--tw-prose-background:theme(colors.slate.50)] dark:shadow-[inset_0_calc(-1*var(--tw-prose-underline-size,2px))_0_0_var(--tw-prose-underline,theme(colors.blue.500))] dark:hover:[--tw-prose-underline-size:6px] dark:text-blue-300 text-blue-800 font-semibold inactive" link="true">Solid community on Discord</a>
-    to share your projects or get help from our community!
-</p>
-<a class="flex no-underline hover:font-bold hover:text-blue-700 dark:hover:text-blue-300 dark:text-slate-300 " href="https://github.com/solidjs/solid-docs-next/edit/main/src/routes/index.mdx" target="_blank">
-    <!--$-->
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="mr-1 w-[16px] ">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"></path>
-    </svg>
-    <!--/-->
-    <!--$-->
-    Edit this page
-    <!--/-->
-</a>
-<a class="flex no-underline hover:font-bold hover:text-blue-700 dark:hover:text-blue-300 dark:text-slate-300 " href="https://github.com/solidjs/solid-docs-next/issues/new?assignees=ladybluenotes&amp;labels=improve+documentation%2Cpending+review&amp;projects=&amp;template=CONTENT.yml&amp;title=[Content]:&amp;subject=/index.mdx">
-    <!--$-->
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="mr-1 w-[16px] ">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"></path>
-    </svg>
-    <!--/-->
-    <!--$-->
-    Report an issue with this page
-    <!--/-->
-</a>
-</article></main>
-<!--$-->
-<div class="hidden xl:block shrink-0 w-56 2xl:w-72 pr-4 prose prose-slate dark:prose-invert dark:text-slate-300">
-    <div class="sticky top-[4.75rem] h-[calc(100vh-7rem)] overflow-y-auto custom-scrollbar">
-        <div class="h-full relative">
-            <!--$-->
-            <aside aria-label="table of contents" class="w-full pt-5">
-                <span class="text-base font-semibold text-slate-900 dark:text-white">On this page</span>
-                <ol role="list" class="text-sm list-none mt-2 p-0 flex flex-col pl-2.5 space-y-2">
-                    <li class="pl-0 mt-0 mb-0">
-                        <span>
-                            <a href="#_top" class=" text-blue-800 dark:text-blue-300 font-bold hover:text-slate-700 dark:hover:text-slate-200 no-underline hover:font-bold hover:text-slate-800">Overview</a>
-                        </span>
-                    </li>
-                    <!--$-->
-                    <!--/-->
-                </ol>
-            </aside>
-            <!--/-->
-            <!--$-->
-            <span class="text-base font-semibold text-slate-900 dark:text-white">Contribute</span>
-            <ol role="list" class="text-sm list-none p-0 mt-1.5 flex flex-col pl-2.5 prose-a:text-slate-600 prose-li:my-1">
-                <li class="pl-0">
-                    <span class="[&amp;>a]:gap-x-1 [&amp;>a>svg]:w-[15px]">
-                        <a class="flex no-underline hover:font-bold hover:text-blue-700 dark:hover:text-blue-300 dark:text-slate-300 " href="https://github.com/solidjs/solid-docs-next/edit/main/src/routes/index.mdx" target="_blank">
-                            <!--$-->
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="mr-1 w-[16px] ">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"></path>
-                            </svg>
-                            <!--/-->
-                            <!--$-->
-                            Edit this page
-                            <!--/-->
-                        </a>
-                    </span>
-                </li>
-                <li class="pl-0">
-                    <span class="[&amp;>a]:gap-x-1 [&amp;>a>svg]:w-[15px]">
-                        <a class="flex no-underline hover:font-bold hover:text-blue-700 dark:hover:text-blue-300 dark:text-slate-300 " href="https://github.com/solidjs/solid-docs-next/issues/new?assignees=ladybluenotes&amp;labels=improve+documentation%2Cpending+review&amp;projects=&amp;template=CONTENT.yml&amp;title=[Content]:&amp;subject=/index.mdx">
-                            <!--$-->
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="mr-1 w-[16px] ">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"></path>
-                            </svg>
-                            <!--/-->
-                            <!--$-->
-                            Report an issue with this page
-                            <!--/-->
-                        </a>
-                    </span>
-                </li>
-            </ol>
-            <!--/-->
-        </div>
-    </div>
-</div>
-<!--/-->
-</div></div>
-<!--!$/e0-0-0-0-0-0-0-0-0-1-0-0-0-0-0-0-0-1-0-->
-<!--!$/e0-0-0-0-0-0-->
-</div>
-</body></html>
+                <label for="message" class="mt-6 font-medium text-gray-900 max-md:max-w-full">Your message</label>
+                <textarea id="message" name="message" class="justify-center px-4 pt-3 pb-14 mt-2 max-w-full text-gray-500 bg-gray-50 rounded-lg border border-gray-300 border-solid" placeholder="Write text here ..." aria-label="Your message"></textarea>
+                <button type="submit" class="justify-center self-end px-5 py-3 mt-6 mr-80 text-base font-medium leading-6 text-white whitespace-nowrap bg-blue-600 rounded-lg max-md:mr-2.5">Submit</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,48 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="icon" href="/favicon.ico">
-        <link rel="alternate icon" href="/favicon.svg" type="image/svg+xml">
-        <script>
-            function getCookie(name, cookieString) {
-                if (!name || !cookieString)
-                    return "system";
-                const match = cookieString.match(new RegExp(`\\W?${name}=(?<theme>\\w+)`));
-                return match?.groups?.theme || "system";
-            }
-
-            const getUserTheme = ()=>getCookie("theme", document.cookie);
-
-            const getSystemTheme = ()=>window.matchMedia("(prefers-color-scheme: dark)").matches ? {
-                value: "dark",
-                theme: "material-theme-ocean"
-            } : {
-                value: "light",
-                theme: "min-light"
-            };
-
-            const systemTheme = getSystemTheme();
-            const themes = [{
-                value: "light",
-                theme: "min-light"
-            }, {
-                value: "dark",
-                theme: "material-theme-ocean"
-            }, {
-                value: systemTheme.value,
-                theme: systemTheme.theme,
-            }, ];
-            const themeName = getUserTheme();
-            const theme = themes.find((t)=>t.value == themeName) ?? themes[2];
-
-            document.documentElement.classList.add(theme.value);
-            document.documentElement.setAttribute('data-theme', theme.theme);
-        </script>
-        
-        <title>Lightning TV</title>
-    </head>
-    <body class="min-h-screen dark:bg-slate-900 bg-slate-50">
-        Hello World!
-</body></html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lightning TV Development with SolidJS or VueJS</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="flex flex-col">
+        <div class="flex justify-center items-center px-16 py-6 w-full bg-white max-md:px-5 max-md:max-w-full">
+            <div class="flex gap-5 items-center max-md:flex-wrap">
+                <div class="flex gap-3 self-stretch my-auto">
+                    <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/936d02a6712bb70042666addf339c617dae30d07472281b342127ccb1b6f00e2?apiKey=23c357ad83b14e24b63f8828469e9c31&" alt="Logo 1" class="shrink-0 w-8 aspect-square" />
+                    <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/b22cc1754db2cdb3d3528df1b1bfbe9720d2afe88bdb0b3f821f56afec01da5d?apiKey=23c357ad83b14e24b63f8828469e9c31&" alt="Logo 2" class="shrink-0 max-w-full aspect-[4.17] w-[132px]" />
+                </div>
+                <nav class="flex flex-1 gap-5 justify-between self-stretch items-center my-auto text-base font-medium leading-6 text-center text-gray-900 max-md:flex-wrap">
+                    <a href="#">Home</a>
+                    <a href="#">Features</a>
+                    <a href="#">Why choose us</a>
+                    <a href="#">Contact</a>
+                </nav>
+                <button class="justify-center self-stretch px-5 py-2.5 text-sm font-medium leading-5 text-white bg-blue-700 rounded-lg">Get started</button>
+            </div>
+        </div>
+    </header>
+    <main class="flex flex-col">
+        <section class="flex flex-col justify-center w-full bg-gray-100 max-md:max-w-full">
+            <div class="flex overflow-hidden relative flex-col justify-center p-6 w-full min-h-[700px] max-md:px-5 max-md:max-w-full">
+                <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/128d32d2c4d77261b36c2cea1565246f090d155eb6f9e694dfb59a2152cc4361?apiKey=23c357ad83b14e24b63f8828469e9c31&" alt="" class="object-cover absolute inset-0 size-full" />
+                <div class="flex relative justify-center items-center px-16 py-10 rounded-[40px] max-md:px-5 max-md:max-w-full">
+                    <div class="flex flex-col items-center mt-20 mb-12 max-w-full w-[921px] max-md:my-10">
+                        <h1 class="self-stretch mx-16 text-6xl font-bold text-white bg-clip-text leading-[89.6px] max-md:mr-2.5 max-md:max-w-full max-md:text-4xl">Supercharge your TV Apps</h1>
+                        <p class="self-stretch mt-2 text-lg leading-7 text-center text-white max-md:max-w-full">Use your favorite framework to craft stunning TV Apps<br />with the performance of LightningJS.</p>
+                        <div class="flex gap-4 justify-center mt-16 text-base font-medium leading-6 text-zinc-900 max-md:flex-wrap max-md:mt-10">
+                            <a href="#" class="justify-center px-5 py-3 bg-white rounded-lg">Get Started with SolidJS</a>
+                            <a href="#" class="justify-center px-5 py-3 bg-white rounded-lg">Get Started with VueJS</a>
+                        </div>
+                        <div class="mt-4 text-sm leading-5 text-white">Rating on Google</div>
+                        <div class="flex gap-2 mt-1">
+                            <div class="flex gap-0.5">
+                                <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/7a1705920cd00b48d19946f8c4ff0f6fdb4689edb310f3e4fb4008da6f06fb3c?apiKey=23c357ad83b14e24b63f8828469e9c31&" alt="Star 1" class="shrink-0 aspect-[1.09] fill-yellow-400 w-[26px]" />
+                                <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/735ca5a6fc544a95a265cb0e0b1379ba52a5e168de8307910649f458009b27ed?apiKey=23c357ad83b14e24b63f8828469e9c31&" alt="Star 2" class="shrink-0 w-6 aspect-square fill-yellow-400" />
+                                <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/e4368c5fe5ce680dd875982876b3d35e0af7fdfff6bf3f87fadcbe52eb43db75?apiKey=23c357ad83b14e24b63f8828469e9c31&" alt="Star 3" class="shrink-0 aspect-[1.04] fill-yellow-400 w-[25px]" />
+                                <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/e78d2e8cecb4c49c1122d57c248434266ba19c01eb961cac81194f1cef37096f?apiKey=23c357ad83b14e24b63f8828469e9c31&" alt="Star 4" class="shrink-0 w-6 aspect-square fill-yellow-400" />
+                                <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/e78d2e8cecb4c49c1122d57c248434266ba19c01eb961cac81194f1cef37096f?apiKey=23c357ad83b14e24b63f8828469e9c31&" alt="Star 5" class="shrink-0 w-6 aspect-square fill-yellow-400" />
+                            </div>
+                            <div class="text-base leading-6 text-white">(5.0)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="justify-center px-6 pt-24 pb-16 w-full text-3xl font-medium leading-10 bg-gray-100 text-zinc-900 max-md:pr-6 max-md:pl-5 max-md:max-w-full">LightningJS is an open-source WebGL renderer enabling smooth and visually appealing UIs in a web browser. No HTML or CSS is necessary which results in high performance TV apps even on low-end devices. It provides the flexibility to choose your preferred front-end framework like SolidJS or VueJS.</section>
+        <section class="flex flex-col items-start px-20 py-16 w-full bg-white max-md:px-5 max-md:max-w-full">
+            <h2 class="text-sm font-bold leading-5 text-blue-600 uppercase tracking-[3.5px] max-md:max-w-full">our features</h2>
+            <h3 class="mt-6 text-4xl font-semibold text-black w-[843px] max-md:max-w-full">SolidJS + LightningJS is unmatched in speed and performance</h3>
+            <p class="mt-6 text-lg leading-7 text-zinc-500 w-[843px] max-md:max-w-full">SolidJS is an established framework with 10,000+ members in its community. It is the top rated in performance across all front-end frameworks and is now available for your TV app development.</p>
+            <div class="self-stretch mt-8 max-md:max-w-full">
+                <div class="flex gap-5 max-md:flex-col max-md:gap-0">
+                    <article class="flex flex-col w-[33%] max-md:ml-0 max-md:w-full">
+                        <div class="flex flex-col grow self-stretch p-6 max-md:px-5 max-md:max-w-full">
+                            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/3cb80164a39240c52400814966937427c763968c38c9f95c0f42cc21204ff1e2?apiKey=23c357ad83b14e24b63f8828469e9c31&" alt="Feature Icon 1" class="w-8 aspect-square" />
+                            <h4 class="mt-8 text-3xl font-semibold text-neutral-800">Small</h4>
+                            <p class="mt-2 text-base leading-6 text-gray-500">7kb Minified + Gzipped</p>
+                        </div>
+                    </article>
+                    <article class="flex flex-col ml-5 w-[33%] max-md:ml-0 max-md:w-full">
+                        <div class="flex flex-col grow self-stretch p-6 border-l border-gray-300 border-solid max-md:px-5 max-md:max-w-full">
+                            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/1aed1c2baf4e54d1789bee230be7491ef1414edc8a59bbbfd9bfc5513e52c144?apiKey=23c357ad83b14e24b63f8828469e9c31&" alt="Feature Icon 2" class="w-8 aspect-square" />
+                            <h4 class="mt-8 text-3xl font-semibold text-neutral-800">Fast</h4>
+                            <p class="mt-2 text-base leading-6 text-gray-500">3x faster than Blits, the proprietary application<br/>framework for LightningJS</p>
+                        </div>
+                    </article>
+                    <article class="flex flex-col ml-5 w-[33%] max-md:ml-0 max-md:w-full">
+                        <div class="flex flex-col grow self-stretch p-6 border-l border-gray-300 border-solid max-md:px-5 max-md:max-w-full">
+                            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/153f46ffc23dcf1e378d6865106758aafdee5befa0990a8993039b9789c1343e?apiKey=23c357ad83b14e24b63f8828469e9c31&" alt="Feature Icon 3" class="w-8 aspect-square" />
+                            <h4 class="mt-8 text-3xl font-semibold text-neutral-800">Ready</h4>
+                            <p class="mt-2 text-base leading-6 text-gray-500">Fully loaded with all the features</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+            <div class="flex gap-4 justify-center self-center mt-8 text-base font-medium leading-6">
+                <a href="#" class="justify-center px-5 py-3 text-blue-600 rounded-lg border border-blue-600 border-solid">Explore Demo</a>
+                <button class="justify-center px-5 py-3 text-white bg-blue-600 rounded-lg">Get Started</button>
+            </div>
+        </section>
+        <section class="flex justify-center items-center px-16 py-16 w-full bg-white max-md:px-5 max-md:max-w-full">
+            <article class="flex flex-col p-16 w-full bg-gray-100 max-w-[1062px] rounded-[40px] max-md:px-5 max-md:max-w-full">
+                <h2 class="text-3xl font-semibold leading-9 text-center text-zinc-900 max-md:max-w-full">VueJS provides Power and Flexibility for LightningJS</h2>
+                <p class="mt-6 text-lg leading-7 text-center text-zinc-500 max-md:max-w-full">VueJS provides a powerful and flexible foundation for building TV apps with Lightning JS. Its strong community, rich ecosystem, and gradual adoption approach make it a versatile choice.</p>
+                <button class="justify-center self-center px-5 py-3 mt-6 text-base font-medium leading-6 text-white bg-blue-600 rounded-lg">Get Started (Beta)</button>
+            </article>
+        </section>
+        <section class="flex flex-col items-start px-20 py-16 w-full bg-white max-md:px-5 max-md:max-w-full">
+            <h2 class="text-sm font-bold leading-5 text-blue-600 uppercase tracking-[3.5px] max-md:max-w-full">Why choose us</h2>
+            <h3 class="mt-6 text-4xl font-semibold text-black w-[843px] max-md:max-w-full">SolidJS + LightningJS is unmatched in speed and performance</h3>
+            <p class="mt-6 text-lg leading-7 text-zinc-500 w-[843px] max-md:max-w-full">SolidJS is an established framework with 10,000+ members in its community. It is the top rated in performance across all front-end frameworks and is now available for your TV app development.</p>
+            <div class="self-stretch mt-8 max-md:max-w-full">
+                <div class="flex gap-5 max-md:flex-col max-md:gap-0">
+                    <article class="flex flex-col w-6/12 max-md:ml-0 max-md:w-full">
+                        <div class="flex flex-col grow self-stretch p-6 border-r border-gray-300 border-solid max-md:px-5 max-md:max-w-full">
+                            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/81ad053bc33fb91f68f7bee42ece7111825cc262a4fe6f7d54df905925925d77?apiKey=23c357ad83b14e24b63f8828469e9c31&" alt="Reason Icon 1" class="w-8 aspect-square" />
+                            <h4 class="mt-8 text-2xl font-semibold leading-9 text-neutral-800 max-md:max-w-full">Performance</h4>
+                            <p class="mt-2 text-base leading-6 text-zinc-500 max-md:max-w-full">Experience blazing-fast performance with LightningJS's WebGL renderer and SolidJS's reactive updates. This translates to a smooth user experience on all devices, especially low-end ones.</p>
+                        </div>
+                    </article>
+                    <article class="flex flex-col ml-5 w-6/12 max-md:ml-0 max-md:w-full">
+                        <div class="flex flex-col grow self-stretch p-6 border-l border-gray-300 border-solid max-md:px-5 max-md:max-w-full">
+                            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/23562e407eb5268c0a2551cb6213353b8cf40e1622d6bb33496236fa35b9e1dd?apiKey=23c357ad83b14e24b63f8828469e9c31&" alt="Reason Icon 2" class="w-8 aspect-square" />
+                            <h4 class="mt-8 text-2xl font-semibold leading-9 text-neutral-800 max-md:max-w-full">Reliability</h4>
+                            <p class="mt-2 text-base leading-6 text-zinc-500 max-md:max-w-full">Build rock-solid TV apps with LightningJS's well-established foundation and SolidJS (production-ready) or VueJS's (large, active community) backing. Focus on creating your app knowing the framework won't be your weak link.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+            <div class="self-stretch max-md:max-w-full">
+                <div class="flex gap-5 max-md:flex-col max-md:gap-0">
+                    <article class="flex flex-col w-6/12 max-md:ml-0 max-md:w-full">
+                        <div class="flex flex-col grow self-stretch p-6 border-t border-r border-gray-300 border-solid max-md:px-5 max-md:max-w-full">
+                            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/51d7c194cdf2fb33fc5a28968c56ef3134d31668bc9f1eca3365cba5e3750e0b?apiKey=23c357ad83b14e24b63f8828469e9c31&" alt="Reason Icon 3" class="w-8 aspect-square" />
+                            <h4 class="mt-8 text-2xl font-semibold leading-9 text-neutral-800 max-md:max-w-full">Community</h4>
+                            <p class="mt-2 text-base leading-6 text-zinc-500 max-md:max-w-full">Never feel alone. LightningJS offers a supportive community, and both SolidJS (growing rapidly) and VueJS (massive community) boast extensive resources and helpful developers.</p>
+                        </div>
+                    </article>
+                    <article class="flex flex-col ml-5 w-6/12 max-md:ml-0 max-md:w-full">
+                        <div class="flex flex-col grow self-stretch p-6 border-t border-l border-gray-300 border-solid max-md:px-5 max-md:max-w-full">
+                            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/0625424e901a1b1848c81511b7575d795b231d88d863c1e05ba572e7aac01a04?apiKey=23c357ad83b14e24b63f8828469e9c31&" alt="Reason Icon 4" class="w-8 aspect-square" />
+                            <h4 class="mt-8 text-2xl font-semibold leading-9 text-neutral-800 max-md:max-w-full">Innovation</h4>
+                            <p class="mt-2 text-base leading-6 text-zinc-500 max-md:max-w-full">Stay ahead of the curve. LightningJS embraces innovation, continuously evolving to meet the latest TV development needs. SolidJS offers a unique, performant approach, while VueJS has a vibrant ecosystem pushing the boundaries of web development.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <section class="flex flex-col justify-center items-center px-6 py-16 w-full text-sm leading-5 bg-gray-100 max-md:px-5 max-md:max-w-full">
+            <h2 class="font-bold text-blue-600 uppercase leading-[140%] tracking-[3.5px]">Contact Us</h2>
+            <h3 class="mt-4 text-4xl font-semibold text-center leading-[50.4px] text-zinc-900 max-md:max-w-full">Don’t know where to begin?</h3>
+            <p class="mt-4 text-xl leading-7 text-center text-gray-500 w-[629px] max-md:max-w-full">Whether you have a question, an idea, or need expert advice, our team is ready to assist you.</p>
+            <form class="mt-6 font-medium text-gray-900 max-md:max-w-full w-[629px] max-md:max-w-full">
+                <label for="name" class="sr-only">Your name</label>
+                <input type="text" id="name" name="name" class="justify-center px-4 py-2 mt-2 max-w-full text-gray-500 bg-gray-50 rounded-lg border border-gray-300 border-solid" placeholder="e.g. Burhan yudha" aria-label="Your name" />
+                <div class="flex gap-5 mt-6 max-w-full max-md:flex-wrap">
+                    <div class="flex flex-col flex-1">
+                        <label for="email" class="font-medium text-gray-900">Your Email</label>
+                        <input type="email" id="email" name="email" class="justify-center px-4 py-2 mt-2 text-gray-500 bg-gray-50 rounded-lg border border-gray-300 border-solid" placeholder="e.g. Burhan yudha" aria-label="Your Email" />
+                    </div>
+                    <div class="flex flex-col flex-1">
+                        <label for="phone" class="font-medium text-gray-900">Your Phone</label>
+                        <input type="tel" id="phone" name="phone" class="justify-center px-4 py-2 mt-2 text-gray-500 bg-gray-50 rounded-lg border border-gray-300 border-solid" placeholder="e.g. Burhan yudha" aria-label="Your Phone" />
+                    </div>
+                </div>
+                <label for="message" class="mt-6 font-medium text-gray-900 max-md:max-w-full">Your message</label>
+                <textarea id="message" name="message" class="justify-center px-4 pt-3 pb-14 mt-2 max-w-full text-gray-500 bg-gray-50 rounded-lg border border-gray-300 border-solid" placeholder="Write text here ..." aria-label="Your message"></textarea>
+                <button type="submit" class="justify-center self-end px-5 py-3 mt-6 mr-80 text-base font-medium leading-6 text-white whitespace-nowrap bg-blue-600 rounded-lg max-md:mr-2.5">Submit</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
