@@ -174,7 +174,7 @@
                   Small
                 </h4>
                 <p class="mt-2 text-base leading-6 text-gray-500">
-                  12kb Minified + Gzipped
+                  ~12kb Minified + Gzipped
                 </p>
               </div>
             </article>
@@ -221,8 +221,16 @@
           </div>
         </div>
         <div
-          class="grid grid-cols-1 my-12 md:grid-cols-2 place-items-center gap-8 items-stretch"
+          class="grid grid-cols-1 mt-12 md:grid-cols-2 place-items-center gap-8 items-stretch w-full"
         >
+          <div
+            class="flex flex-col gap-2 rounded-xl bg-gray-100 p-4 w-full"
+          >
+            <h2 class="text-2xl font-semibold">Reactivity</h2>
+            <p class="grow">
+                Fine-grained reactivity lets you do more with less
+            </p>
+          </div>
           <div
             class="flex flex-col gap-2 rounded-xl bg-gray-100 p-4 w-full"
           >
@@ -287,8 +295,8 @@
           </div>
         </div>
 
-        <p>
-            Reactivity, Router, Focus Management, Dynamic Components, and more...
+        <p class="mb-8 mt-6">
+        Router, Focus Management, Dynamic Components, Portal, Styles, Fragments, Suspense and more...
         </p>
 
         <div
@@ -551,5 +559,11 @@
         </form>
       </section>
     </main>
+    <footer
+      class="flex flex-col justify-center border-t border-gray-300 items-center px-6 py-16 max-md:px-5 max-md:max-w-full"
+    >
+        <a rel="noopener" target="_blank" href="https://discord.com/invite/solidjs"><span class="sr-only">Discord</span><svg viewBox="0 0 24 24" class="h-8 transition hover:opacity-50 opacity-60"><path fill="currentColor" d="M12 0C5.3 0 0 5.3 0 12s5.3 12 12 12 12-5.4 12-12S18.6 0 12 0zM9.7 5.9a.05.05 0 0 1 .06.03 8.43 8.43 0 0 1 .41.83 12.2 12.2 0 0 1 3.66 0 9.19 9.19 0 0 1 .4-.83.05.05 0 0 1 .06-.03 13.2 13.2 0 0 1 3.26 1.01.04.04 0 0 1 .02.02c1.8 2.66 2.7 5.66 2.37 9.11a.05.05 0 0 1-.02.04 13.24 13.24 0 0 1-4 2.02.05.05 0 0 1-.06-.02 10.65 10.65 0 0 1-.82-1.33.05.05 0 0 1 .02-.07 8.2 8.2 0 0 0 1.25-.6.05.05 0 0 0 .01-.08 6.47 6.47 0 0 1-.25-.2.05.05 0 0 0-.05 0 9.47 9.47 0 0 1-8.05 0 .05.05 0 0 0-.05 0l-.25.2a.05.05 0 0 0 0 .08 8.75 8.75 0 0 0 1.26.6.05.05 0 0 1 .02.07 9.48 9.48 0 0 1-.82 1.33.05.05 0 0 1-.05.02 13.28 13.28 0 0 1-4-2.02.05.05 0 0 1-.02-.04c-.28-2.99.29-6.01 2.37-9.11a.05.05 0 0 1 .02-.02A13.17 13.17 0 0 1 9.7 5.9zM9.35 11c-.8 0-1.43.72-1.43 1.6 0 .9.64 1.62 1.43 1.62.8 0 1.44-.72 1.44-1.61.02-.88-.63-1.61-1.44-1.61zm5.33 0c-.8 0-1.44.72-1.44 1.6 0 .9.65 1.62 1.44 1.62.8 0 1.43-.72 1.43-1.61.02-.88-.63-1.61-1.43-1.61z"></path></svg></a>
+        <p>Released under the Apache 2.0 license Copyright © 2024 Chris Lorenzo</p>
+    </footer>
   </body>
 </html>
